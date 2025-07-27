@@ -1,0 +1,43 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<ConfirmationPopupWindow>:
+    background_color: (1.5, 1.5, 1.5, 0.75)
+    pos_hint: {'x': 0.2, 'top': 0.6}
+    separator_height: 0
+    size_hint: (0.6, 0.2)
+    auto_dismiss: False
+    title_align: 'center'
+    title_size: window_height // 45
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: confirmation_button_id
+            icon: 'check-bold'
+            icon_color: (0, 1, 0, 1)
+            icon_size: window_height // 19
+            md_bg_color: (0.3, 0.3, 0.3, 1)
+            theme_icon_color: 'Custom'
+        Widget:
+        MDIconButton:
+            id: cancel_button_id
+            icon: 'close-thick'
+            icon_color: (1, 0, 0, 1)
+            icon_size: window_height // 19
+            md_bg_color: (0.3, 0.3, 0.3, 1)
+            theme_icon_color: 'Custom'
+        Widget:

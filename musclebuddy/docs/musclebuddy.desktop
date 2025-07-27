@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/mobian/musclebuddy/main.py
+Name=Muscle Buddy
+Comment=Muscle Buddy workout application
+Icon=/home/mobian/musclebuddy/muscle_buddy.png
+Categories=System;
+NoDisplay=false
+StartupNotify=true
+Path=/home/mobian/musclebuddy
+X-Purism-FormFactor=Mobile;
+

@@ -1,0 +1,45 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<WorkoutSelector>:
+    id: workout_selector_layout
+    orientation: 'vertical'
+    FloatLayout:
+        MDBoxLayout:
+            orientation: 'vertical'
+            Carousel:
+                id: workout_type_carousel
+                loop: True
+                size_hint_y: 0.60
+                ignore_perpendicular_swipes: True
+                valign_y: 'top'
+                on_index: root.set_trainer(args[1])
+            Label:
+                id: workout_selector_instruction_label
+                halign: 'center'
+                valign: 'center'
+                text: '[b]INSTRUCTIONS[/b]\nSwipe left/right to change trainer.\nSwipe up/down to change workout.'
+                size_hint_y: 0.1
+                font_size: self.height/5
+                markup: True
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            MDIconButton:
+                id: 'workout_trainer_fast_nav_button_id'
+                icon: 'weight-lifter'
+                icon_size: window_height // 19
+                on_release: app.fast_nav('workout_trainer_id')

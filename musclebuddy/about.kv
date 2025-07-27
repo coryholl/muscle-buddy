@@ -1,0 +1,42 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:import os os
+
+<About>:
+    orientation: 'vertical'
+    MDBoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        AsyncImage:
+            source: os.path.join('images', 'man.white.png')
+            fit_mode: 'contain'
+            size_hint_x: 0.1
+        Label:
+            text: '[b]Muscle Buddy[/b]: A tool for building muscle.\nVersion: β-2 Tom\nCopyright © 2025 Cory Jon Hollingsworth\nhttps://muscle-buddy.sourceforge.io'
+            font_size: window_height // 45
+            halign: 'center'
+            size_hint_x: 0.9
+            markup: True
+    Label:
+        text: 'LICENSE'
+        size_hint_y: 0.05
+        font_size: window_height // 45
+    ScrollView:
+        MDGridLayout:
+            id: license_container_id
+            cols: 1
+            adaptive_height: True

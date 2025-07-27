@@ -1,0 +1,97 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:import os os
+
+<Config>:
+    orientation: 'vertical'
+    Widget:
+    MDBoxLayout:
+        id: control_panel_id
+        orientation: 'horizontal'
+        MDGridLayout:
+            cols: 1
+            id: software_keyboard_container_id
+            Widget:
+            MDBoxLayout:
+                orientation: 'horizontal'
+                Widget:
+                MDIconButton:
+                    id: software_keyboard_button_id
+                    icon: 'keyboard-outline'
+                    on_release: root.toggle_kv_button('software keyboard')
+                    icon_size: window_height // 19
+                Widget:
+            Label:
+                id: software_keyboard_label_id
+                halign: 'center'
+                text: 'software\nkeyboard on'
+                font_size: window_height // 40
+    Widget:
+    MDGridLayout:
+        cols: 1
+        Widget:
+        MDBoxLayout:
+            orientation: 'horizontal'
+            Widget:
+                size_hint_x: 0.2
+            MDSlider:
+                id: volume_slider_id
+                hint: True
+                show_off: True
+                on_value: root.volume_slider_touched()
+            Widget:
+                size_hint_x: 0.2
+        Widget:
+        MDBoxLayout:
+            orientation: 'horizontal'
+            Widget:
+            MDIconButton:
+                id: volume_mute_button_id
+                icon: 'volume-mute'
+                on_release: root.toggle_mute()
+                icon_size: window_height // 19
+            Widget:
+    Widget:
+    MDGridLayout:
+        cols: 1
+        MDBoxLayout:
+            orientation: 'horizontal'
+            Widget:
+                size_hint_x: 0.2
+            MDSlider:
+                id: selector_bubble_limit_id
+                hint: True
+                max: 10
+                min: 1
+                show_off: False
+                step: 1
+                on_value: root.selector_bubble_slider_touched()
+            Widget:
+                size_hint_x: 0.2
+        Widget:
+        MDBoxLayout:
+            orientation: 'horizontal'
+            Widget:
+            MDIconButton:
+                id: select_bubble_button_id
+                icon: 'format-list-numbered'
+                icon_size: window_height // 19
+            Widget:
+        Label:
+            id: select_bubble_label_id
+            font_size: window_height // 40
+    Widget:

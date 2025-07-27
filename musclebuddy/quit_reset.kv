@@ -1,0 +1,57 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<QuitReset>:
+    orientation: 'vertical'
+    Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: maximize_button
+            icon: 'window-maximize'
+            icon_size: window_height // 10
+            on_release: root.maximize_button_press()
+        Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: shutdown_button
+            icon: 'power'
+            icon_size: window_height // 10
+            on_release: root.shutdown_button_press()
+        Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        Widget:
+        MDIconButton:
+            id: reset_button
+            icon: 'reload'
+            icon_size: window_height // 10
+            on_release: root.reset_button_press()
+        Widget:
+    MDBoxLayout:
+        orientation: 'horizontal'
+        id: minimize_button_container
+        Widget:
+        MDIconButton:
+            id: minimize_button
+            icon: 'window-minimize'
+            icon_size: window_height // 10
+            on_release: root.minimize_button_press()
+        Widget:
+    Widget:

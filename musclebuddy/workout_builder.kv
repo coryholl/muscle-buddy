@@ -1,0 +1,260 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<WorkoutBuilder>:
+    id: workout_builder_layout
+    GridLayout:
+        cols: 1
+        Carousel:
+            id: trainer_carousel_id
+            size_hint_x: 1
+            size_hint_y: 0.1
+            loop: True
+            on_index: root.set_carousel_swipe(args[1])
+            MDBoxLayout:
+                orientation: 'horizontal'
+                workout_type: 'classic strength training'
+                Image:
+                    id: classic_strength_training
+                    size_hint_x: 0.2
+                    mipmap: True
+                    fit_mode: 'contain'
+                Label:
+                    text: 'Classic Trainer'
+                    size_hint_x: 0.8
+                    text_size: self.size
+                    halign:'center'
+                    valign:'center'
+                    markup: True
+                    font_size: window_height // 30
+            MDBoxLayout:
+                orientation: 'horizontal'
+                workout_type: 'timed, random, muscle confusion'
+                Image:
+                    id: timed,_random,_muscle_confusion
+                    size_hint_x: 0.2
+                    mipmap: True
+                    fit_mode: 'contain'
+                Label:
+                    text: 'Trainer Random Muscle Confusion'
+                    size_hint_x: 0.8
+                    text_size: self.size
+                    halign:'center'
+                    valign:'center'
+                    markup: True
+                    font_size: window_height // 30
+            MDBoxLayout
+                orientation: 'horizontal'
+                workout_type: 'timed workout with timed sets and auto advance'
+                Image:
+                    id: timed_workout_with_timed_sets_and_auto_advance
+                    size_hint_x: 0.2
+                    mipmap: True
+                    fit_mode: 'contain'
+                Label:
+                    text: 'Timed With Auto Advance'
+                    size_hint_x: 0.8
+                    text_size: self.size
+                    halign:'center'
+                    valign:'center'
+                    markup: True
+                    font_size: window_height // 30
+        MDBoxLayout:
+            id: workout_name_container_id
+            orientation: 'horizontal'
+            size_hint_x: 1
+            size_hint_y: 0.1
+            MDIconButton:
+                id: previous_workout_name_button_id
+                size_hint_x: 0.1
+                icon: 'arrow-left-drop-circle'
+                icon_size: window_height // 19
+                on_release: root.next_previous_workout_button_press('previous')
+            WorkoutTextField:
+                id: workout_name_id
+                field_name: 'workout_name_id'
+                size_hint_x: 0.7
+                hint_text: 'WORKOUT NAME'
+                cursor_color: 1, 1, 1, 1
+                font_size: window_height // 35
+                on_text: root.workout_name_text_update()
+                input_field_type: 'text'
+                keyboard_location: 'bottom_keypad_container_id'
+            MDIconButton:
+                id: clear_workout_button_id
+                size_hint_x: 0.1
+                theme_icon_color: 'Custom'
+                icon: 'alpha-c-circle'
+                icon_color: (1, 1, 0, 1)
+                icon_size: window_height // 19
+                on_release: root.clear_workout_button_press()
+            MDIconButton:
+                id: insert_workout_name_button_id
+                size_hint_x: 0.1
+                icon: 'arrow-right-drop-circle'
+                icon_size: window_height // 19
+                on_release: root.next_previous_workout_button_press('next')
+        MDBoxLayout:
+            id: exercise_group_container_id
+            orientation: 'horizontal'
+            size_hint_x: 1
+            size_hint_y: 0.1
+            keyboard_location: 'bottom_keypad_container_id'
+        MDBoxLayout:
+            id: exercise_container_id
+            orientation: 'horizontal'
+            size_hint_x: 1
+            size_hint_y: 0.1
+            keyboard_location: 'bottom_keypad_container_id'
+            MDIconButton:
+                id: previous_exercise_id
+                size_hint_x: 0.1
+                icon: 'arrow-left-drop-circle'
+                icon_size: window_height // 19
+                on_release: root.previous_set_button_press()
+                disabled: True
+            MDIconButton:
+                id: delete_exercise_id
+                size_hint_x: 0.1
+                icon: 'minus-circle'
+                icon_size: window_height // 19
+                on_release: root.delete_set_button_press()
+                disabled: True
+            MDIconButton:
+                id: create_before_exercise_button_id
+                size_hint_x: 0.1
+                icon: 'table-column-plus-before'
+                icon_size: window_height // 19
+                on_release: root.create_new_set_button_press('before')
+                disabled: True
+            WorkoutTextField:
+                id: exercise_id
+                field_name: 'exercise_id'
+                size_hint_x: 0.4
+                hint_text: 'EXERCISE'
+                cursor_color: 1, 1, 1, 1
+                font_size: window_height // 35
+                input_field_type: 'exercise selector'
+                keyboard_location: 'bottom_keypad_container_id'
+                cursor_width: 0
+                disabled: True
+            MDIconButton:
+                id: create_after_exercise_button_id
+                size_hint_x: 0.1
+                icon: 'table-column-plus-after'
+                icon_size: window_height // 19
+                on_release: root.create_new_set_button_press('after')
+                disabled: True
+            MDIconButton:
+                id: next_exercise_id
+                size_hint_x: 0.1
+                icon: 'arrow-right-drop-circle'
+                icon_size: window_height // 19
+                on_release: root.next_set_button_press()
+                disabled: True
+        MDBoxLayout:
+            id: set_container_id
+            orientation: 'horizontal'
+            size_hint_x: 1
+            size_hint_y: 0.1
+            keyboard_location: 'top_keypad_container_id'
+        MDBoxLayout:
+            id: set_controls_container_id
+            orientation: 'horizontal'
+            size_hint_x: 1
+            size_hint_y: 0.1
+            Widget:
+            MDBoxLayout:
+                orientation: 'vertical'
+                Widget:
+                MDIconButton:
+                    id: reps_timer_button_id
+                    icon: 'abacus'
+                    on_release: root.toggle_reps_timer()
+                    icon_size: window_height // 19
+                    disabled: True
+                Label:
+                    id: reps_timer_label_id
+                    text: 'reps'
+                    font_size: window_height // 40
+                Widget:
+            Widget:
+            MDBoxLayout:
+                orientation: 'vertical'
+                Widget:
+                MDIconButton:
+                    id: left_right_button_id
+                    icon: 'hand-clap-off'
+                    on_release: root.toggle_left_right()
+                    icon_size: window_height // 19
+                    disabled: True
+                Label:
+                    id: left_right_label_id
+                    text: 'single set'
+                    font_size: window_height // 40
+                Widget:
+            Widget:
+            MDBoxLayout:
+                orientation: 'vertical'
+                Widget:
+                MDIconButton:
+                    id: pound_kilogram_button_id
+                    icon: 'weight-pound'
+                    on_release: root.toggle_pound_kilogram()
+                    icon_size: window_height // 19
+                    disabled: True
+                Label:
+                    id: pound_kilogram_label_id
+                    text: 'pound'
+                    font_size: window_height // 40
+                Widget:
+            Widget:
+        FloatLayout:
+            size_hint_y: 0.1
+            id: sound_container_id
+        Widget:
+            size_hint_y: 0.2
+    AnchorLayout:
+        id: keypad_button_container_id
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+        MDIconButton:
+            id: 'keypad_summon_button_id'
+            icon: 'keyboard-outline'
+            icon_size: window_height // 19
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        MDBoxLayout:
+            orientation: 'horizontal'
+            Widget:
+            MDIconButton:
+                id: delete_workout_name_button_id
+                icon: 'delete'
+                icon_size: window_height // 19
+                on_release: root.workout_delete_button_press()
+                disabled: True
+            Widget:
+            MDIconButton:
+                id: insert_workout_name_button_id
+                icon: 'database-arrow-up'
+                icon_size: window_height // 19
+                on_release: root.workout_insert_button_press()
+            Widget:
+    AnchorLayout:
+        id: keypad_container_id
+        anchor_x: 'center'
+        anchor_y: 'bottom'

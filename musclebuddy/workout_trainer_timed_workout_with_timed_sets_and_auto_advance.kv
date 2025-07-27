@@ -1,0 +1,88 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<WorkoutTrainerTimedWorkoutWithTimedSetsAndAutoAdvance>:
+    id: workout_trainer_layout
+    canvas.before:
+        Color:
+            rgba: app.tabata_bg_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    orientation: 'vertical'
+    halign: 'center'
+
+    Label:
+        id: workout_name
+        text: app.tabata_workout_name
+        text_size: self.size
+        size_hint_y: 0.1
+        halign:'center'
+        valign:'center'
+        markup: True
+        font_size: self.height/1.1
+
+    TabataTimer:
+        id: workout_timer
+        timer_type: 'workout'
+        text: app.tabata_workout_timer
+        size_hint_y: 0.3
+        halign:'center'
+        valign:'top'
+        font_size: self.height
+        markup: True
+
+    Label:
+        id: workout_exercise_name_label
+        text: app.tabata_exercise_name
+        text_size: self.size
+        size_hint_y: 0.1
+        halign:'center'
+        valign:'center'
+        markup: True
+        font_size: self.height/1.1
+
+    Carousel:
+        id: workout_exercise_image_carousel
+        loop: True
+
+        AsyncImage:
+            source: os.path.join('images', 'presplash.png')
+            mipmap: True
+            fit_mode: 'contain'
+    Label:
+        id: set_timer
+        timer_type: 'set'
+        text: app.tabata_set_timer
+        size_hint_y: 0.2
+        halign:'center'
+        valign:'center'
+        theme_text_color: 'Custom'
+        font_size: self.height
+        markup: True
+
+    MDLabel:
+        id: instruction_label
+        size_hint_y: 0.4
+        text: 'Tap top timer to start.\n[b]KEY[/b]\n[color=#FFD760][b]GOLD[/b][/color] - primary muscles\n[color=#7AD1B0][b]TEAL[/b][/color] - secondary muscles'
+        text_size: self.size
+        halign: 'center'
+        valign: 'center'
+        theme_text_color: 'Custom'
+        text_color: 1, 1, 1, 1
+        font_size: window_height // 45
+        markup: True
+

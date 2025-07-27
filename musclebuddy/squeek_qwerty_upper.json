@@ -1,0 +1,47 @@
+{
+    "title": "Squeekboard QWERTY Uppercase Clone",
+    "description": "Squeekboard mimic Keyboard",
+	"cols": 10,
+    "rows": 4,
+    "normal_1": [
+        ["Q", "Q", "Q", 1],
+        ["W", "W", "W", 1],
+        ["E", "E", "E", 1],
+        ["R", "R", "R", 1],
+        ["T", "T", "T", 1],
+        ["Y", "Y", "Y", 1],
+        ["U", "U", "U", 1],
+        ["I", "I", "I", 1],
+        ["O", "O", "O", 1],
+        ["P", "P", "P", 1]
+    ],
+    "normal_2": [
+        ["A", "A", "A", 1.11],
+        ["S", "S", "S", 1.11],
+        ["D", "D", "D", 1.11],
+        ["F", "F", "F", 1.11],
+        ["G", "G", "G", 1.11],
+        ["H", "H", "H", 1.11],
+        ["J", "J", "J", 1.11],
+        ["K", "K", "K", 1.11],
+        ["L", "L", "L", 1.11]
+    ],
+    "normal_3": [
+        ["⬇", "lowpad", "lowpad", 1.5],
+        ["Z", "Z", "Z", 1],
+        ["X", "X", "X", 1],
+        ["C", "C", "C", 1],
+        ["V", "V", "V", 1],
+        ["B", "B", "B", 1],
+        ["N", "N", "N", 1],
+        ["M", "M", "M", 1],
+        ["⌫", "backspace", "backspace", 1.5]
+    ],
+    "normal_4": [
+        ["123", "numpad", "numpad", 1.5],
+        [" ", " ", " ", 4.5],
+        ["τ=/", "symbolpad", "symbolpad", 1.5],
+        ["⏎", "enter", "enter", 1.5],
+        ["✕", "exit", "exit", 1]
+    ]
+}

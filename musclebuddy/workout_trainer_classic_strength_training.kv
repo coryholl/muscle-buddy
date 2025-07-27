@@ -1,0 +1,104 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:import os os
+
+<WorkoutTrainerClassicStrengthTraining>:
+    id: workout_trainer_layout
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    FloatLayout:
+        MDBoxLayout:
+            orientation: 'vertical'
+            halign: 'center'
+            MDBoxLayout:
+                id: workout_trainer_carousel_box
+                orientation: 'vertical'
+                halign: 'center'
+
+                Label:
+                    id: workout_exercise_name_label
+                    text: app.classic_exercise_name
+                    text_size: self.size
+                    size_hint_y: 0.075
+                    halign:'center'
+                    valign:'center'
+                    markup: True
+                    font_size: self.height/1.1
+
+                Carousel:
+                    id: workout_exercise_image_carousel
+                    loop: True
+                    on_touch_up: root.reset_image_rotate_timer(args[1])
+
+                    AsyncImage:
+                        source: os.path.join('images', 'presplash.png')
+                        mipmap: True
+                        fit_mode: 'contain'
+
+                RestTimer:
+                    id: rest_timer
+                    canvas.before:
+                        Color:
+                            rgb: self.timer_background_color
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    timer_type: 'set'
+                    text: app.workout_rest_timer
+                    size_hint_y: 0.15
+                    halign:'center'
+                    valign:'center'
+                    theme_text_color: 'Custom'
+                    font_size: self.height
+                    markup: True
+
+            SetCarousel:
+                id: workout_set_carousel
+                size_hint_y: 0.35
+                on_index: root.set_changed(args[1])
+
+                SetLabel:
+                    id: instruction_label
+                    text: 'Swipe and tap to control timer\nSwipe here for sets\n[b]KEY[/b]\n[color=#FFD760][b]GOLD[/b][/color] - primary muscles\n[color=#7AD1B0][b]TEAL[/b][/color] - secondary muscles'
+                    text_size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    theme_text_color: 'Custom'
+                    text_color: 1, 1, 1, 1
+                    font_size: window_height // 45
+                    markup: True
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            MDIconButton:
+                id: 'set_recorder_fast_nav_button_id'
+                icon: 'pencil'
+                icon_size: window_height // 19
+                on_release: app.fast_nav('set_recorder_id')
+        AnchorLayout:
+            id: keypad_button_container_id
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+        AnchorLayout:
+            id: keypad_container_id
+            anchor_x: 'center'
+            anchor_y: 'bottom'

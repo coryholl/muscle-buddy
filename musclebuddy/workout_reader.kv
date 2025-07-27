@@ -1,0 +1,67 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<WorkoutReader>:
+    MDBoxLayout:
+        id: workout_reader_layout
+        orientation: 'vertical'
+        MDBoxLayout:
+            size_hint_y: 0.1
+            orientation: 'horizontal'
+            MDIconButton:
+                id: calendar_button_id
+                size_hint_x: 0.2
+                icon: 'calendar-search'
+                on_release: root.select_date()
+                disabled: False
+                icon_size: window_height // 19
+            WorkoutTextField:
+                id: exercise_name_id
+                hint_text: 'Exercise Name'
+                font_size: window_height // 35
+                disabled: False
+                mode: 'line'
+                on_text: root.build_list(self.text)
+                on_focus: root.set_focus(args[0])
+                input_field_type: 'text'
+            MDIconButton:
+                id: search_exercise_id
+                size_hint_x: 0.2
+                icon: 'text-search-variant'
+                on_release: root.text_search()
+                disabled: False
+                icon_size: window_height // 19
+        RecycleView:
+            id: recycle_view_id
+            key_viewclass: 'viewclass'
+            key_size: 'height'
+            font_size: window_height // 50
+            on_touch_up: root.recycle_view_touch(args[0], args[1])
+            RecycleBoxLayout:
+                id: recycle_box_layout_id
+                default_size: None, window_height // 15
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+    AnchorLayout:
+        id: keypad_button_container_id
+        anchor_x: 'right'
+        anchor_y: 'bottom'
+    AnchorLayout:
+        id: keypad_container_id
+        anchor_x: 'center'
+        anchor_y: 'bottom'

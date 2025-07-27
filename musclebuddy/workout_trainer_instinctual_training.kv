@@ -1,0 +1,91 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:import os os
+
+<WorkoutTrainerInstinctualTraining>:
+    FloatLayout:
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.2
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Carousel:
+                        id: exercise_selector_carousel
+                        loop: True
+                        Label:
+                            text: 'Touch muscle for exercises.\nSwipe to choose a match.'
+                            font_size: window_height // 45
+                    MDAnchorLayout:
+                        MDIconButton:
+                            id: add_set_button_id
+                            anchor_x: 'center'
+                            icon: 'plus-circle'
+                            icon_size: window_height // 19
+                            on_release: root.add_set()
+                            disabled: True
+
+            FloatLayout:
+                RelativeLayout:
+                    id: muscle_selector_id
+
+                AnchorLayout:
+                    anchor_x: 'left'
+                    anchor_y: 'bottom'
+                    MDIconButton:
+                        id: 'set_recorder_fast_nav_button_id'
+                        icon: 'pencil'
+                        icon_size: window_height // 19
+                        on_release: app.fast_nav('set_recorder_id')
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            Image:
+                id: front_button_id
+                canvas.before:
+                    Color:
+                        rgba: root.selector_front_button_color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: (8, 8, 8, 8)
+                size_hint_x: 0.1
+                size_hint_y: 0.12
+                keep_data: True
+                source: os.path.join('images', app.app_data_dict['image overlays']['Master']['front'])
+                on_touch_up: root.select_orientation(args[0], args[1], 'front')
+
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'center'
+            Image:
+                id: back_button_id
+                canvas.before:
+                    Color:
+                        rgba: root.selector_back_button_color
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: (8, 8, 8, 8)
+                size_hint_x: 0.1
+                size_hint_y: 0.12
+                keep_data: True
+                source: os.path.join('images', app.app_data_dict['image overlays']['Master']['back'])
+                on_touch_up: root.select_orientation(args[0], args[1], 'back')

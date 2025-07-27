@@ -1,0 +1,119 @@
+# Copyright (C) 2024 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+#:kivy 2.2.0
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+#:import pantheon_util pantheon_util
+#:include scale.kv
+#:include about.kv
+#:include config.kv
+#:include confirmation_popup_window.kv
+#:include drawer_clickable_item.kv
+#:include exercise_creator.kv
+#:include exercise_selector_popup_window.kv
+#:include license_label.kv
+#:include loading.kv
+#:include quit_reset.kv
+#:include selector_bubble.kv
+#:include selector_bubble_option.kv
+#:include set_carousel.kv
+#:include set_recorder.kv
+#:include set_label.kv
+#:include timer.kv
+#:include timers.kv
+#:include workout_builder.kv
+#:include workout_reader.kv
+#:include workout_selector.kv
+#:include workout_text_field.kv
+#:include workout_trainer_classic_strength_training.kv
+#:include workout_trainer_instinctual_training.kv
+#:include workout_trainer_timed_random_muscle_confusion.kv
+#:include workout_trainer_timed_workout_with_timed_sets_and_auto_advance.kv
+
+MDScreen:
+    MDNavigationLayout:
+        ScreenManager:
+            id: screen_manager_id
+            transition: NoTransition(duration=0)
+            MDScreen:
+                id: root_screen
+                MDStackLayout:
+                    MDTopAppBar:
+                        id: app_title
+                        title: app.title
+                        elevation: 4
+                        pos_hint: {'top': 1}
+                        md_bg_color: (0.33, 0.33, 0.33, 1)
+                        specific_text_color: (1, 1, 1, 1)
+                        left_action_items: [['menu', pantheon_util.open_nav_drawer]]
+                        disabled: app.load_disable
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        MDBoxLayout:
+                            id: screen_container
+                            orientation: 'vertical'
+                            Loading:
+                                id: calibration_screen
+                        Widget:
+                            size_hint_y: 0.1
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+            MDNavigationDrawerMenu:
+                id: nav_menu
+                DrawerClickableItem:
+                    id: workout_selector_id
+                    icon: 'dumbbell'
+                    text: 'Select Workout'
+                    selected: True
+                DrawerClickableItem:
+                    id: workout_trainer_id
+                    icon: 'weight-lifter'
+                    text: 'Workout Trainer'
+                    right_text: app.trainer_state
+                DrawerClickableItem:
+                    id: set_recorder_id
+                    icon: 'pencil'
+                    text: 'Record Set'
+                DrawerClickableItem:
+                    id: workout_reader_id
+                    icon: 'book-open-variant'
+                    text: 'Workout History'
+                DrawerClickableItem:
+                    id: exercise_creator_id
+                    icon: 'wrench'
+                    text: 'Exercise Creator'
+                DrawerClickableItem:
+                    id: workout_builder_id
+                    icon: 'hammer-wrench'
+                    text: 'Workout Builder'
+                DrawerClickableItem:
+                    id: timers_id
+                    icon: 'timer'
+                    text: 'Timers'
+                    right_text: app.timers_state
+                DrawerClickableItem:
+                    id: config_id
+                    icon: 'folder-wrench'
+                    text: 'Config'
+                DrawerClickableItem:
+                    id: about_id
+                    icon: 'information'
+                    text: 'About'
+                DrawerClickableItem:
+                    id: quit_reset_id
+                    icon: 'power'
+                    text: 'Quit/Reset'

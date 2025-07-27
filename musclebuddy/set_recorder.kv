@@ -1,0 +1,152 @@
+# Copyright (C) 2025 Cory Jon Hollingsworth
+#
+# This file is part of Muscle Buddy.
+#
+# Muscle Buddy is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+<SetRecorder>:
+    orientation: 'vertical'
+    disabled: False
+
+    MDBoxLayout:
+        id: set_recorder_form_id
+        orientation: 'vertical'
+        disabled: False
+
+        MDBoxLayout
+            orientation: 'vertical'
+            padding: (10, 10, 10, 10)
+            size_hint_y: 0.60
+
+            MDAnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'top'
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    Label:
+                        id: set_number_id
+                        size_hint_x: 0.15
+                        text: '0'
+                        font_size: window_height // 30
+                    Label:
+                        id: exercise_name_id
+                        text: 'EXERCISE'
+                        font_size: window_height // 30
+
+            MDAnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'top'
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    Widget:
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        Widget:
+                        MDIconButton:
+                            id: reps_timer_button_id
+                            icon: 'abacus'
+                            halign: 'center'
+                            on_release: root.toggle_reps_timer()
+                            icon_size: window_height // 19
+                        Label:
+                            id: reps_timer_label_id
+                            text: 'reps'
+                            font_size: window_height // 40
+                        Widget:
+                    Widget:
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        Widget:
+                        MDIconButton:
+                            id: left_right_button_id
+                            icon: 'hand-clap-off'
+                            on_release: root.toggle_left_right()
+                            icon_size: window_height // 19
+                        Label:
+                            id: left_right_label_id
+                            halign: 'center'
+                            text: 'single set'
+                            font_size: window_height // 40
+                        Widget:
+                    Widget:
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        Widget:
+                        MDIconButton:
+                            id: pound_kilogram_button_id
+                            icon: 'weight-pound'
+                            on_release: root.toggle_pound_kilogram()
+                            icon_size: window_height // 19
+                        Label:
+                            id: pound_kilogram_label_id
+                            halign: 'center'
+                            text: 'pound'
+                            font_size: window_height // 40
+                        Widget:
+                    Widget:
+
+            MDAnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'top'
+                MDBoxLayout:
+                    id: set_container_id
+                    orientation: 'horizontal'
+            MDBoxLayout:
+                orientation: 'horizontal'
+                Widget:
+                MDIconButton:
+                    id: previous_button_id
+                    icon: 'arrow-left-drop-circle'
+                    on_release: root.previous_press()
+                    disabled: True
+                    icon_size: window_height // 19
+                Widget:
+                MDIconButton:
+                    id: save_button_id
+                    icon: 'notebook-remove'
+                    theme_icon_color: 'Custom'
+                    on_release: root.save_press()
+                    disabled: True
+                    icon_size: window_height // 19
+                Widget
+                MDIconButton:
+                    id: next_button_id
+                    icon: 'arrow-right-drop-circle'
+                    on_release: root.next_press()
+                    disabled: True
+                    icon_size: window_height // 19
+                Widget:
+    FloatLayout:
+        size_hint_y: 0.4
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+            MDIconButton:
+                id: 'workout_trainer_fast_nav_button_id'
+                icon: 'weight-lifter'
+                icon_size: window_height // 19
+                on_release: app.fast_nav('workout_trainer_id')
+        AnchorLayout:
+            id: keypad_button_container_id
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            MDIconButton:
+                id: 'keypad_summon_button_id'
+                icon: 'keyboard-outline'
+                icon_size: window_height // 19
+#                on_release: app.fast_nav('workout_trainer_id')
+# repalce with python cjh
+        AnchorLayout:
+            id: keypad_container_id
+            anchor_x: 'center'
+            anchor_y: 'bottom'
