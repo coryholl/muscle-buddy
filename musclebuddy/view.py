@@ -35,6 +35,7 @@ import android_util
 import config
 import exercise_creator
 import linux_mobile_util
+import over_press
 #import pantheon_util
 import quit_reset
 import set_recorder
@@ -188,7 +189,8 @@ class MuscleBuddyApp(MDApp):
             nav_item_id - kivy id of nav drawer item to activate for nav action
         purpose: fast nav to a screen attached to a nav drawer item
         """
-        self.root.ids['nav_menu'].reset_active_color(self.root.ids[nav_item_id])
+        if over_press.protect(vibrate=True):
+            self.root.ids['nav_menu'].reset_active_color(self.root.ids[nav_item_id])
 
     def load_slow_resources(self, dt):
         """
