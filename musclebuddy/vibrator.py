@@ -1,8 +1,8 @@
 # Copyright (C) 2025 Cory Jon Hollingsworth
 #
-# This file is part of Muscle Buddy.
+# This file is part of the Pantheon suite.
 #
-# Muscle Buddy is free software: you can redistribute it and/or modify
+# The Pantheon suite is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
@@ -13,10 +13,13 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+# along with the Pantheon suite.  If not, see <https://www.gnu.org/licenses/>.
 from kivy.app import App
 from kivy.utils import platform
 from kivy.logger import Logger
+
+__version__ = '1.0.0'
+
 if platform == 'linux':
     import evdev
     from evdev import ecodes, InputDevice, ff
@@ -74,7 +77,7 @@ class Vibrator:
         self.vibrator_device = None
         for path in evdev.list_devices():
             device = evdev.InputDevice(path)
-            if device.name == 'gpio-vibrator':
+            if device.name in ('gpio-vibrator', 'pwm-vibrator'):
                 self.vibrator_device = device
                 break
             device.close()
