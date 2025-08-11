@@ -97,6 +97,7 @@ class WorkoutTrainerTimedRandomMuscleConfusion(WorkoutTrainer):
             self.next_set_label()
             self.set_finished_pulsate_object = None
             workout['active set'].append(copy.deepcopy(exercise))
+            workout['active set'][-1]['workout name'] = workout['name']
             workout['active set'][-1]['recorded'] = False
             set_recorder = unpickleable['set recorder']
             set_recorder.ids['set_recorder_form_id'].disabled = False
@@ -126,6 +127,7 @@ class WorkoutTrainerTimedRandomMuscleConfusion(WorkoutTrainer):
             workout_timer.state = 'not started'
             workout_index = properties['workout index']
             workout_timer.time_left = app.app_data_dict['workout dictionary'][workout_index]['time length']
+        self.ids['keypad_button_container_id'].disabled = False
         set_recorder.update_set_recorder()
         set_recorder.update_form()
 

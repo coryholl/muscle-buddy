@@ -214,8 +214,10 @@ class SetRecorder(MDBoxLayout, TextInputUtil):
         exercise_set['time'] = self.parse_time(unpickleable['set recorder time'].text) if (
                 not left_right_is_on and timed_is_on) else None
         exercise_set['trainer'] = workout['type']
-        exercise_set['weight unit name'] = 'pound' if self.ids['pound_kilogram_button_id'].icon == self.pound_icon else 'kilogram'
-        exercise_set['workout name'] = workout['name']
+        exercise_set['weight unit name'] = 'pound' if self.ids['pound_kilogram_button_id'].icon == self.pound_icon \
+            else 'kilogram'
+        exercise_set['workout name'] = exercise_set['workout name'] if 'workout name' in exercise_set \
+            else workout['name']
         unpickleable['database'].store_set(exercise_set)
 
     def set_recommended_set_from_workout_plan(self, unpickleable, exercise_set, none_to_val):
