@@ -47,18 +47,19 @@ class MuscleSelector:
         Logger.info('muscle_selector: muscle_touched: touch.pos {}'.format(touch.pos))
         if image.collide_point(touch.x, touch.y):
             app = App.get_running_app()
-            if over_press.protect(app = app, vibrate=True):
-                binding_box_ratio = image.width / image.height
-                if binding_box_ratio >= image.image_ratio:
-                    scale = image.size[1] / image.texture_size[1]
-                    x_padding = (image.size[0] - (image.texture_size[0] * scale)) / 2
-                    x_coord = (touch.x - x_padding) / scale
-                    y_coord = image.texture_size[1] - (touch.y / scale)
-                    if 0 <= x_coord < image.texture_size[0] and 0 <= y_coord < image.texture_size[1]:
+#            if over_press.protect(app = app, vibrate=True):
+            binding_box_ratio = image.width / image.height
+            if binding_box_ratio >= image.image_ratio:
+                scale = image.size[1] / image.texture_size[1]
+                x_padding = (image.size[0] - (image.texture_size[0] * scale)) / 2
+                x_coord = (touch.x - x_padding) / scale
+                y_coord = image.texture_size[1] - (touch.y / scale)
+                if 0 <= x_coord < image.texture_size[0] and 0 <= y_coord < image.texture_size[1]:
+                    if over_press.protect(app = app, vibrate=True):
                         for muscle in app.app_data_dict['unpickleable']['muscle selector maps'].values():
                             if self.image_orientation in muscle and 'primary' in muscle[self.image_orientation]:
                                 color = muscle[self.image_orientation]['primary']['core image'].read_pixel(x_coord,
-                                                                                                           y_coord)
+                                    y_coord)
                                 self.map_muscle_state(muscle, color[3])
                         self.render_muscles()
 
