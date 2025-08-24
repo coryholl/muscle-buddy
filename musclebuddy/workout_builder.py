@@ -17,6 +17,7 @@
 import bisect
 import copy
 import os
+import pathlib
 import textwrap
 from collections import OrderedDict
 from kivy.app import App
@@ -25,6 +26,7 @@ from kivy.logger import Logger # debug
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
+from kivy.utils import platform
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.button.button import MDFillRoundFlatIconButton
 #local imports
@@ -1108,7 +1110,15 @@ class WorkoutBuilder(FloatLayout, TextInputUtil):
             sound_file_path - path to sound file
         purpose: update sound file data sources display and future storage
         """
-        self.finish_sound_file_name = sound_file_path
+        if platform in ('linux', 'macosx'):
+            home_dir = str(pathlib.Path.home())
+            if sound_file_path.startswith(home_dir):
+                local_path = '~' + sound_file_path[len(home_dir):]
+            else:
+                local_path = sound_file_path
+        else:
+            local_path = sound_file_path
+        self.finish_sound_file_name = local_path
         file_name = os.path.basename(sound_file_path)
         self.sound_selector_button.text = textwrap.shorten(file_name, width=35, placeholder="...") \
             if file_name else 'select sound file'

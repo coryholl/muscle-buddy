@@ -1,8 +1,8 @@
 # Copyright (C) 2025 Cory Jon Hollingsworth
 #
-# This file is part of Muscle Buddy.
+# This file is part of the Pantheon suite.
 #
-# Muscle Buddy is free software: you can redistribute it and/or modify
+# The Pantheon suite is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
@@ -13,11 +13,13 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with Muscle Buddy.  If not, see <https://www.gnu.org/licenses/>.
+# along with the Pantheon suite.  If not, see <https://www.gnu.org/licenses/>.
 import os
 import pathlib
 from kivy.app import App
 from kivy.core.audio import SoundLoader
+
+__version__ = '1.0.0'
 
 class Sound:
     """
@@ -51,10 +53,11 @@ class Sound:
         returns: correct path for mapping
         """
         sound_file_path = None
-        if os.path.exists(file_path):
-            sound_file_path = file_path
+        expanded_file_path = os.path.expanduser(file_path)
+        if os.path.exists(expanded_file_path):
+            sound_file_path = expanded_file_path
         else:
-            app_sound_path = os.path.join('sounds', file_path)
+            app_sound_path = os.path.join('sounds', expanded_file_path)
             if os.path.exists(app_sound_path):
                 sound_file_path = app_sound_path
             else:
