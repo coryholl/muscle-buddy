@@ -568,7 +568,7 @@ class WorkoutBuilder(FloatLayout, TextInputUtil):
         if over_press.protect(vibrate=True):
             self.sync_form_to_list()
             current_exercise_group = self.workout[self.row_index]['exercise_group_name']
-            index = self.row_index + 1
+            index = self.row_index
             while len(self.workout) > index and current_exercise_group == self.workout[index]['exercise_group_name']:
                 index += 1
             self.row_index = index
@@ -721,7 +721,7 @@ class WorkoutBuilder(FloatLayout, TextInputUtil):
         if over_press.protect(vibrate=True):
             self.sync_form_to_list()
             current_exercise_group = self.workout[self.row_index]['exercise_group_name']
-            index = self.row_index - 1
+            index = self.row_index
             while index and current_exercise_group == self.workout[index]['exercise_group_name']:
                 index -= 1
             self.row_index = index
