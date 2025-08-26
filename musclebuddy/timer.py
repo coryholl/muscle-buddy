@@ -157,91 +157,91 @@ class Timer(Label, HardKeyboardState):
         app = App.get_running_app()
         if over_press.protect(app = app, vibrate=True):
             sound = app.app_data_dict['unpickleable']['sound']
-# Python 3.10 syntax commented out for future restore
-#            match keycode:
-#                case 'backspace':
-#                    if self.timer_index:
-#                        if self.time_pad_str[self.timer_index] != ':':
-#                            self.time_pad_str = self.time_pad_str[:self.timer_index] + '0' + \
-#                                self.time_pad_str[self.timer_index + 1:]
-#                        self.timer_index -= 1
-#                    else:
-#                        self.time_pad_str = '0' + self.time_pad_str[1:]
-#                    self.time_left = self.parse_time_string(self.time_pad_str)
-#                    self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
-#                case 'exit':
-#                    soft_keyboard.remove_soft_keyboard()
-#                case 'left':
-#                    if self.timer_index:
-#                        self.timer_index -= 1
-#                    else:
-#                        sound.play_sound('beep.ogg')
-#                case 'right':
-#                    if self.timer_index < self.max_timer_index:
-#                        self.timer_index += 1
-#                    else:
-#                        sound.play_sound('beep.ogg')
-#                case 'tab':
-#                    pass
-#                case _:
-#                    if len(keycode) == 1:
-#                        test_text = list(self.time_pad_str)
-#                        if test_text[self.timer_index] == ':' and keycode != ':':
-#                            self.timer_index += 1
-#                        test_text[self.timer_index] = keycode
-#                        test_str = ''.join(test_text)
-#                        if re.match(self.time_regular_expression, test_str):
-#                            self.timer_index = self.timer_index + 1 if self.timer_index < self.max_timer_index else \
-#                                self.timer_index
-#                            self.time_pad_str = test_str
-#                            self.time_left = self.parse_time_string(self.time_pad_str)
-#                            self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
-#                        else:
-#                            sound.play_sound('beep.ogg')
-#                    else:
-#                        sound.play_sound('beep.ogg')
-# start old Python syntax
-            if keycode == 'backspace':
-                if self.timer_index:
-                    if self.time_pad_str[self.timer_index] != ':':
-                        self.time_pad_str = self.time_pad_str[:self.timer_index] + '0' + \
-                            self.time_pad_str[self.timer_index + 1:]
-                    self.timer_index -= 1
-                else:
-                    self.time_pad_str = '0' + self.time_pad_str[1:]
-                self.time_left = self.parse_time_string(self.time_pad_str)
-                self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
-            elif keycode == 'exit':
-                soft_keyboard.remove_soft_keyboard()
-            elif keycode == 'left':
-                if self.timer_index:
-                    self.timer_index -= 1
-                else:
-                    sound.play_sound('beep.ogg')
-            elif keycode == 'right':
-                if self.timer_index < self.max_timer_index:
-                    self.timer_index += 1
-                else:
-                    sound.play_sound('beep.ogg')
-            elif keycode == 'tab':
-                pass
-            else:
-                if len(keycode) == 1:
-                    test_text = list(self.time_pad_str)
-                    if test_text[self.timer_index] == ':' and keycode != ':':
-                        self.timer_index += 1
-                    test_text[self.timer_index] = keycode
-                    test_str = ''.join(test_text)
-                    if re.match(self.time_regular_expression, test_str):
-                        self.timer_index = self.timer_index + 1 if self.timer_index < self.max_timer_index else \
-                            self.timer_index
-                        self.time_pad_str = test_str
-                        self.time_left = self.parse_time_string(self.time_pad_str)
-                        self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
+# Python 3.10 syntax
+            match keycode:
+                case 'backspace':
+                    if self.timer_index:
+                        if self.time_pad_str[self.timer_index] != ':':
+                            self.time_pad_str = self.time_pad_str[:self.timer_index] + '0' + \
+                                self.time_pad_str[self.timer_index + 1:]
+                        self.timer_index -= 1
+                    else:
+                        self.time_pad_str = '0' + self.time_pad_str[1:]
+                    self.time_left = self.parse_time_string(self.time_pad_str)
+                    self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
+                case 'exit':
+                    soft_keyboard.remove_soft_keyboard()
+                case 'left':
+                    if self.timer_index:
+                        self.timer_index -= 1
                     else:
                         sound.play_sound('beep.ogg')
-                else:
-                    sound.play_sound('beep.ogg')
+                case 'right':
+                    if self.timer_index < self.max_timer_index:
+                        self.timer_index += 1
+                    else:
+                        sound.play_sound('beep.ogg')
+                case 'tab':
+                    pass
+                case _:
+                    if len(keycode) == 1:
+                        test_text = list(self.time_pad_str)
+                        if test_text[self.timer_index] == ':' and keycode != ':':
+                            self.timer_index += 1
+                        test_text[self.timer_index] = keycode
+                        test_str = ''.join(test_text)
+                        if re.match(self.time_regular_expression, test_str):
+                            self.timer_index = self.timer_index + 1 if self.timer_index < self.max_timer_index else \
+                                self.timer_index
+                            self.time_pad_str = test_str
+                            self.time_left = self.parse_time_string(self.time_pad_str)
+                            self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
+                        else:
+                            sound.play_sound('beep.ogg')
+                    else:
+                        sound.play_sound('beep.ogg')
+# start old Python syntax
+#            if keycode == 'backspace':
+#                if self.timer_index:
+#                    if self.time_pad_str[self.timer_index] != ':':
+#                        self.time_pad_str = self.time_pad_str[:self.timer_index] + '0' + \
+#                            self.time_pad_str[self.timer_index + 1:]
+#                    self.timer_index -= 1
+#                else:
+#                    self.time_pad_str = '0' + self.time_pad_str[1:]
+#                self.time_left = self.parse_time_string(self.time_pad_str)
+#                self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
+#            elif keycode == 'exit':
+#                soft_keyboard.remove_soft_keyboard()
+#            elif keycode == 'left':
+#                if self.timer_index:
+#                    self.timer_index -= 1
+#                else:
+#                    sound.play_sound('beep.ogg')
+#            elif keycode == 'right':
+#                if self.timer_index < self.max_timer_index:
+#                    self.timer_index += 1
+#                else:
+#                    sound.play_sound('beep.ogg')
+#            elif keycode == 'tab':
+#                pass
+#            else:
+#                if len(keycode) == 1:
+#                    test_text = list(self.time_pad_str)
+#                    if test_text[self.timer_index] == ':' and keycode != ':':
+#                        self.timer_index += 1
+#                    test_text[self.timer_index] = keycode
+#                    test_str = ''.join(test_text)
+#                    if re.match(self.time_regular_expression, test_str):
+#                        self.timer_index = self.timer_index + 1 if self.timer_index < self.max_timer_index else \
+#                            self.timer_index
+#                        self.time_pad_str = test_str
+#                        self.time_left = self.parse_time_string(self.time_pad_str)
+#                        self.markup_timer = self.format_time(self.time_left, self.timer_text_color, '')
+#                    else:
+#                        sound.play_sound('beep.ogg')
+#                else:
+#                    sound.play_sound('beep.ogg')
 # end old Python syntax
 
     def manage_keyboard_state(self):
@@ -254,7 +254,13 @@ class Timer(Label, HardKeyboardState):
         if config['software keyboard']['active']:
             time_pad = soft_keyboard.get_keyboard('time')
             time_pad.on_key_up = self.key_press
-            self.keypad_container.add_widget(time_pad)
+            if time_pad.parent and time_pad.parent is self:
+                pass
+            elif time_pad.parent:
+                time_pad.parent.remove_widget(time_pad)
+                self.keypad_container.add_widget(time_pad)
+            else:
+                self.keypad_container.add_widget(time_pad)
         if config['hardware keyboard']['active']:
             hard_keyboard.get_hard_keyboard(self, on_key_down=self.hard_key_press, on_key_up=self.hard_key_release)
 
@@ -329,93 +335,105 @@ class Timer(Label, HardKeyboardState):
         """
         Logger.info(f'timer: timer_on_touch_up: touch {touch} touch_type {touch_type} app {app} state {self.state}')
         workout_index = app.app_data_dict['global properties']['workout index']
-# Python 3.10 syntax commented out for future restore
-#        match self.state:
-#            case 'finish':
-#                self.state = 'shutdown'
-#                stateful_clock.unschedule(self.finished_visual_alarm)
-#                stateful_clock.unschedule(self.get_negative_workout_time)
-#                self.timer_background_color = (0, 0, 0)
-#                if app.app_data_dict['workout dictionary'][workout_index]['alarm sound file']:
-#                    app.app_data_dict['unpickleable']['sound'].stop_sound(
-#                        app.app_data_dict['workout dictionary'][workout_index]['alarm sound file'])
-#                app.app_data_dict['unpickleable']['sound'].stop_sound('cloister_bell.ogg')
-#            case 'not started':
-#                if touch_type == 'press':
-#                    self.state = 'run'
-#                    self.time_left = self.time_left if self.time_left else (
-#                        app.app_data_dict)['workout dictionary'][workout_index]['time length']
-#                    self.end_time = time.time() + self.time_left
-#                    stateful_clock.schedule_interval(self.get_time, 1)
-#                else:
-#                    if self.time_left:
-#                        self.time_left += 60 * (1 if touch_type == 'left' else -1)
-#                        self.time_left = self.time_left if self.time_left > 0 else 0
-#                    else:
-#                        self.time_left = (app.app_data_dict['workout dictionary'][workout_index]['time length'] + 60 *
-#                                          (1 if touch_type == 'left' else -1))
-#            case 'pause':
-#                if touch_type == 'press':
-#                    self.state = 'run'
-#                    self.end_time = self.time_left + time.time()
-#                    stateful_clock.unschedule(self.timer_paused_indicator)
-#                    self.timer_paused_pulsate_object = None
-#                    self.timer_text_color = get_hex_from_color((1, 1, 1))
-#                    stateful_clock.schedule_interval(self.get_time, 1)
-#                else:
-#                    self.time_left += 60 * (1 if touch_type == 'left' else -1)
-#                    self.time_left = self.time_left if self.time_left > 0 else 0
-#            case 'run':
-#                if touch_type == 'press':
-#                    self.state = 'pause'
-#                    stateful_clock.unschedule(self.get_time)
-#                    self.manage_keyboard_state()
-#                    stateful_clock.schedule_interval(self.timer_paused_indicator, 0.05)
-#            case 'shutdown':
-#                pass
-# start old Python syntax
-        if self.state == 'finish':
-            self.state = 'shutdown'
-            stateful_clock.unschedule(self.finished_visual_alarm)
-            stateful_clock.unschedule(self.get_negative_workout_time)
-            self.timer_background_color = (0, 0, 0)
-            if app.app_data_dict['workout dictionary'][workout_index]['alarm sound file']:
-                app.app_data_dict['unpickleable']['sound'].stop_sound(
-                    app.app_data_dict['workout dictionary'][workout_index]['alarm sound file'])
-            app.app_data_dict['unpickleable']['sound'].stop_sound('cloister_bell.ogg')
-        elif self.state == 'not started':
-            if touch_type == 'press':
-                self.state = 'run'
-                self.time_left = self.time_left if self.time_left else (
-                    app.app_data_dict)['workout dictionary'][workout_index]['time length']
-                self.end_time = time.time() + self.time_left
-                stateful_clock.schedule_interval(self.get_time, 1)
-            else:
-                if self.time_left:
+# Python 3.10 syntax
+        match self.state:
+            case 'finish':
+                self.state = 'shutdown'
+                stateful_clock.unschedule(self.finished_visual_alarm)
+                stateful_clock.unschedule(self.get_negative_workout_time)
+                self.timer_background_color = (0, 0, 0)
+                if app.app_data_dict['workout dictionary'][workout_index]['alarm sound file']:
+                    app.app_data_dict['unpickleable']['sound'].stop_sound(
+                        app.app_data_dict['workout dictionary'][workout_index]['alarm sound file'])
+                app.app_data_dict['unpickleable']['sound'].stop_sound('cloister_bell.ogg')
+                try:
+                   if 'keypad_button_container_id' in self.parent.parent.parent.ids.keys():
+                       self.parent.parent.parent.ids['keypad_button_container_id'].disabled = False
+                except Exception as e:
+                    pass
+            case 'not started':
+                if touch_type == 'press':
+                    self.state = 'run'
+                    self.time_left = self.time_left if self.time_left else (
+                        app.app_data_dict)['workout dictionary'][workout_index]['time length']
+                    self.end_time = time.time() + self.time_left
+                    stateful_clock.schedule_interval(self.get_time, 1)
+                else:
+                    if self.time_left:
+                        self.time_left += 60 * (1 if touch_type == 'left' else -1)
+                        self.time_left = self.time_left if self.time_left > 0 else 0
+                    else:
+                        self.time_left = (app.app_data_dict['workout dictionary'][workout_index]['time length'] + 60 *
+                                          (1 if touch_type == 'left' else -1))
+            case 'pause':
+                if touch_type == 'press':
+                    self.state = 'run'
+                    self.end_time = self.time_left + time.time()
+                    stateful_clock.unschedule(self.timer_paused_indicator)
+                    self.timer_paused_pulsate_object = None
+                    self.timer_text_color = get_hex_from_color((1, 1, 1))
+                    stateful_clock.schedule_interval(self.get_time, 1)
+                else:
                     self.time_left += 60 * (1 if touch_type == 'left' else -1)
                     self.time_left = self.time_left if self.time_left > 0 else 0
-                else:
-                    self.time_left = (app.app_data_dict['workout dictionary'][workout_index]['time length'] + 60 *
-                                        (1 if touch_type == 'left' else -1))
-        elif self.state == 'pause':
-            if touch_type == 'press':
-                self.state = 'run'
-                self.end_time = self.time_left + time.time()
-                stateful_clock.unschedule(self.timer_paused_indicator)
-                self.timer_paused_pulsate_object = None
-                self.timer_text_color = get_hex_from_color((1, 1, 1))
-                stateful_clock.schedule_interval(self.get_time, 1)
-            else:
-                self.time_left += 60 * (1 if touch_type == 'left' else -1)
-                self.time_left = self.time_left if self.time_left > 0 else 0
-        elif self.state == 'run':
-            if touch_type == 'press':
-                self.state = 'pause'
-                stateful_clock.unschedule(self.get_time)
-                self.manage_keyboard_state()
-                stateful_clock.schedule_interval(self.timer_paused_indicator, 0.05)
-        elif self.state == 'shutdown':
-            pass
+            case 'run':
+                if touch_type == 'press':
+                    self.state = 'pause'
+                    self.timer_index = 0
+                    stateful_clock.unschedule(self.get_time)
+                    self.manage_keyboard_state()
+                    stateful_clock.schedule_interval(self.timer_paused_indicator, 0.05)
+            case 'shutdown':
+                pass
+# start old Python syntax
+#        if self.state == 'finish':
+#            self.state = 'shutdown'
+#            stateful_clock.unschedule(self.finished_visual_alarm)
+#            stateful_clock.unschedule(self.get_negative_workout_time)
+#            self.timer_background_color = (0, 0, 0)
+#            if app.app_data_dict['workout dictionary'][workout_index]['alarm sound file']:
+#                app.app_data_dict['unpickleable']['sound'].stop_sound(
+#                    app.app_data_dict['workout dictionary'][workout_index]['alarm sound file'])
+#            app.app_data_dict['unpickleable']['sound'].stop_sound('cloister_bell.ogg')
+#            try:
+#                if 'keypad_button_container_id' in self.parent.parent.parent.ids.keys():
+#                    self.parent.parent.parent.ids['keypad_button_container_id'].disabled = False
+#            except Exception as e:
+#                pass
+#        elif self.state == 'not started':
+#            if touch_type == 'press':
+#                self.state = 'run'
+#                self.time_left = self.time_left if self.time_left else (
+#                    app.app_data_dict)['workout dictionary'][workout_index]['time length']
+#                self.end_time = time.time() + self.time_left
+#                stateful_clock.schedule_interval(self.get_time, 1)
+#            else:
+#                if self.time_left:
+#                    self.time_left += 60 * (1 if touch_type == 'left' else -1)
+#                    self.time_left = self.time_left if self.time_left > 0 else 0
+#                else:
+#                    self.time_left = (app.app_data_dict['workout dictionary'][workout_index]['time length'] + 60 *
+#                                        (1 if touch_type == 'left' else -1))
+#        elif self.state == 'pause':
+#            if touch_type == 'press':
+#                self.state = 'run'
+#                self.end_time = self.time_left + time.time()
+#                stateful_clock.unschedule(self.timer_paused_indicator)
+#                self.timer_paused_pulsate_object = None
+#                self.timer_text_color = get_hex_from_color((1, 1, 1))
+#                stateful_clock.schedule_interval(self.get_time, 1)
+#            else:
+#                self.time_left += 60 * (1 if touch_type == 'left' else -1)
+#                self.time_left = self.time_left if self.time_left > 0 else 0
+#        elif self.state == 'run':
+#            if touch_type == 'press':
+#                self.state = 'pause'
+#                self.timer_index = 0
+#                stateful_clock.unschedule(self.get_time)
+#                self.manage_keyboard_state()
+#                stateful_clock.schedule_interval(self.timer_paused_indicator, 0.05)
+#        elif self.state == 'shutdown':
+#            pass
 # end old Python syntax
 
         if self.state != 'pause':
@@ -439,7 +457,7 @@ class Timer(Label, HardKeyboardState):
                 self.state = 'run'
                 self.time_left = self.time_left if self.time_left else self.time_length
                 self.end_time = time.time() + self.time_left
-                stateful_clock.schedule_interval(self.get_time, 0.1) # revisit
+                stateful_clock.schedule_interval(self.get_time, 0.1) # revisit cjh
             else:
                 if self.state == 'not started':
                     self.time_left = app.app_data_dict['global properties']['rest time length']
@@ -460,6 +478,7 @@ class Timer(Label, HardKeyboardState):
         elif self.state == 'run':
             if touch_type == 'press':
                 self.state = 'pause'
+                self.timer_index = 0
                 stateful_clock.unschedule(self.get_time)
                 self.manage_keyboard_state()
                 stateful_clock.schedule_interval(self.timer_paused_indicator, 0.05)
