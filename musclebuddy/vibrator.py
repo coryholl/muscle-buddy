@@ -77,7 +77,7 @@ class Vibrator:
         self.vibrator_device = None
         for path in evdev.list_devices():
             device = evdev.InputDevice(path)
-            if device.name in ('gpio-vibrator', 'pwm-vibrator'):
+            if evdev.ecodes.EV_FF in device.capabilities():
                 self.vibrator_device = device
                 break
             device.close()
